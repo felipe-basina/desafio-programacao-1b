@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+	<h1>Status carga arquivo</h1>
+
+	<div th:if="${mensagemErro}">
+		<h2 th:text="${mensagemErro}" />
+	</div>
+
+	<div th:if="${mensagemSucesso}">
+		<h2 th:text="${mensagemSucesso}" />
+
+		<div>
+			<table border="1">
+				<tr>
+					<th>Comprador</th>
+					<th>Descri&ccedil;&atilde;o</th>
+					<th>Pre&ccedil;o unit&aacute;rio</th>
+					<th>Quantidade</th>
+					<th>Endere&ccedil;o</th>
+					<th>Fornecedor</th>
+				</tr>
+				<tr th:each="dadosVenda : ${dadosVendaLista}">
+					<td th:text="${dadosVenda.comprador}" />
+					<td th:text="${dadosVenda.descricao}" />
+					<td th:text="${dadosVenda.precoUnitario}" />
+					<td th:text="${dadosVenda.quantidade}" />
+					<td th:text="${dadosVenda.endereco}" />
+					<td th:text="${dadosVenda.fornecedor}" />
+				</tr>
+				<tr align="center">
+					<td colspan="6">
+						<table>
+							<th>Receita bruta</th>
+							<td><h2 th:text="${receitaBruta}" /></td>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+
+	<br />
+
+	<a href="/">voltar</a>
+
+</body>
+</html>
