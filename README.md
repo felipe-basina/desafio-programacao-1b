@@ -6,20 +6,22 @@ Este desafio deve ser feito por você em sua casa. Gaste o tempo que você quise
 
 ## Pré requisitos
 
-1. Versão java >= 7.0
-2. Versão maven >= 3.0
+1. Versão JAVA >= 7.0
+2. Versão MAVEN >= 3.0
+
+Observação: a base de dados utilizada é a **h2 (com.h2database)**
 
 ## Procedimentos
 
 Uma vez efetuado o download do projeto deve-se executar o seguinte comando no terminal/console (dentro do diretório onde se encontra o mesmo):
 
-mvn clean install spring-boot:run
+**mvn clean install spring-boot:run**
 
-OBS: Adicionar o seguinte parâmetro caso não se deseja executar os testes de unidade -DskipTests=true
+OBS: Adicionar o seguinte parâmetro caso não se deseja executar os testes de unidade **-DskipTests=true**
 
 Finalizado o processo de build/deploy, abrir o navegador de preferência e acessar o seguinte endereço:
 
-http://localhost:8080/
+**http://localhost:8080/**
 
 Uma vez carregada a página, selecionar o arquivo exemplo 'dados.txt' e pressionar o botão 'Carregar'. 
 
@@ -30,4 +32,4 @@ referente à 'Receita bruta' é contabilizada
 
 Para realizar a importação do projeto na IDE eclipse deve-se, primeiro, executar o seguinte comando no diretório onde se encontra o projeto:
 
-mvn eclipse:clean eclipse:eclipse
+**mvn eclipse:clean eclipse:eclipse**
