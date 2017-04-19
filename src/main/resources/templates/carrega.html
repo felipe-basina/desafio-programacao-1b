@@ -1,13 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous"></link>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+	integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+	crossorigin="anonymous"></link>
+</head>
 <body>
 
-	<h1>Exemplo carga/leitura de arquivo</h1>
+	<div class="panel-body">
+		<h1>Exemplo carga/leitura de arquivo</h1>
 
-	<form method="POST" action="/carregar" enctype="multipart/form-data">
-		<input type="file" name="arquivo" /><br />
-		<br /> <input type="submit" value="Carregar" />
-	</form>
+		<form method="POST" action="/carregar" enctype="multipart/form-data">
+			<span class="btn btn-default btn-file"><input type="file"
+				name="arquivo" class="btn btn-secondary" /> </span><br /> <br /> <input
+				type="submit" value="Carregar" class="btn btn-primary" />
+		</form>
+	</div>
 
 </body>
 </html>

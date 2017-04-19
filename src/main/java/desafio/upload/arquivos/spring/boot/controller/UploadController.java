@@ -3,11 +3,11 @@ package desafio.upload.arquivos.spring.boot.controller;
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.io.StringWriter;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.commons.io.IOUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,11 +16,19 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import desafio.upload.arquivos.spring.boot.modelo.DadosVenda;
+import desafio.upload.arquivos.spring.boot.servico.DadosVendaService;
 
 @Controller
 public class UploadController {
 
-    @GetMapping("/")
+	private DadosVendaService dadosVendaService;
+	
+	@Autowired
+    public UploadController(DadosVendaService dadosVendaService) {
+		this.dadosVendaService = dadosVendaService;
+	}
+
+	@GetMapping("/")
     public String iniciar() {
         return "carrega";
     }
@@ -71,17 +79,12 @@ public class UploadController {
             	
             }
             
+            // Persistir registros na base de dados;
+            this.dadosVendaService.salvarRegistros(dadosVendaLista);
+            
             redirectAttributes.addFlashAttribute("mensagemSucesso", "Conteúdo do arquivo");
-            redirectAttributes.addFlashAttribute("dadosVendaLista", dadosVendaLista);
-            
-            Double receitaBruta = 0.0;
-            
-            for (DadosVenda dadosVenda : dadosVendaLista) {
-            	receitaBruta += (dadosVenda.getPrecoUnitario() * dadosVenda.getQuantidade());
-            }
-            
-            DecimalFormat df = new DecimalFormat("#.00"); 
-            redirectAttributes.addFlashAttribute("receitaBruta", df.format(receitaBruta));
+            redirectAttributes.addFlashAttribute("dadosVendaLista", this.dadosVendaService.recuperarDadosVenda());
+            redirectAttributes.addFlashAttribute("receitaBruta", this.dadosVendaService.recuperarValorReceitaBruta());
             
         } catch (Exception ex) {
         	redirectAttributes.addFlashAttribute("mensagemErro", "Algum erro aconteceu: " 

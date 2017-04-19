@@ -1,7 +1,14 @@
 package desafio.upload.arquivos.spring.boot.modelo;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class DadosVenda {
 
+	@Id
+	@GeneratedValue
 	private long id;
 	
 	private String comprador;
